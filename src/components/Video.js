@@ -5,10 +5,11 @@ const Video = props => {
     <div className='apod-video'>
       <iframe
         src={props.url}
+        title={props.title}
         type='text/html'
         width='800'
         height='480'
-        frameborder='0'
+        frameBorder='0'
       />
     </div>
   );
