@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.scss';
 
 import { Image, Description, Video, DatePicker } from './components';
 const moment = require('moment');
