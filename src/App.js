@@ -26,13 +26,13 @@ function App() {
 
   const nextDate = () =>
     setDate(
-      moment(date, 'YYYY-MM-DD')
+      moment(date)
         .add(1, 'days')
         .format('YYYY-MM-DD')
     );
   const prevDate = () =>
     setDate(
-      moment(date, 'YYYY-MM-DD')
+      moment(date)
         .subtract(1, 'days')
         .format('YYYY-MM-DD')
     );
@@ -40,11 +40,19 @@ function App() {
   if (!apod) return <h3>Loading...</h3>;
   else {
     return (
-      <div className='App'>
+      <div className='max-w-5xl mx-auto mt-3 mb-10 text-center'>
+        <h1 className='text-3xl font-bold mx-auto'>
+          NASA Astronomy Picture of the Day
+        </h1>
+        <DatePicker
+          today={today}
+          date={apod.date}
+          changeDate={setDate}
+          prevDate={prevDate}
+          nextDate={nextDate}
+        />
         {apod.media_type === 'image' ? (
-          <div>
-            <Image url={apod.hdurl} alt={apod.title} />
-          </div>
+          <Image url={apod.hdurl} alt={apod.title} />
         ) : (
           <Video url={apod.url} title={apod.title} />
         )}
@@ -53,13 +61,12 @@ function App() {
           date={apod.date}
           explanation={apod.explanation}
         />
-        <DatePicker
-          today={today}
-          date={apod.date}
-          changeDate={setDate}
-          prevDate={prevDate}
-          nextDate={nextDate}
-        />
+        <div className='mx-auto text-gray-400 text-sm'>
+          A service of{' '}
+          <a className='underline hover:text-gray-500' href='http://nasa.gov'>
+            NASA
+          </a>
+        </div>
       </div>
     );
   }

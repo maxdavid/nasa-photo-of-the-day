@@ -2,7 +2,7 @@ import React from 'react';
 
 const Image = props => {
   return (
-    <div className='apod-image'>
+    <div className='w-full h-auto object-contain'>
       <img src={props.url} alt={props.alt} />
     </div>
   );
